@@ -1,0 +1,57 @@
+{
+  "CODEINE": {
+    "primary_gene": "CYP2D6",
+    "all_genes": ["CYP2D6"],
+    "gene": "CYP2D6",
+    "mechanism": "CYP2D6 converts codeine into morphine. Poor metabolizers have reduced analgesia while ultrarapid metabolizers risk toxicity.",
+    "source": "CPIC"
+  },
+
+  "CLOPIDOGREL": {
+    "primary_gene": "CYP2C19",
+    "all_genes": ["CYP2C19"],
+    "gene": "CYP2C19",
+    "mechanism": "CYP2C19 activates clopidogrel. Reduced function leads to decreased platelet inhibition.",
+    "source": "CPIC"
+  },
+
+  "WARFARIN": {
+    "primary_gene": "CYP2C9",
+    "all_genes": ["CYP2C9", "VKORC1"],
+    "genes": ["CYP2C9", "VKORC1"],
+    "mechanism": "CYP2C9 affects metabolism and VKORC1 affects drug sensitivity, influencing dose requirements.",
+    "source": "CPIC"
+  },
+
+  "SIMVASTATIN": {
+    "primary_gene": "SLCO1B1",
+    "all_genes": ["SLCO1B1"],
+    "gene": "SLCO1B1",
+    "mechanism": "Reduced SLCO1B1 transporter function increases statin levels and myopathy risk.",
+    "source": "CPIC"
+  },
+
+  "AZATHIOPRINE": {
+    "primary_gene": "TPMT",
+    "all_genes": ["TPMT", "NUDT15"],
+    "genes": ["TPMT", "NUDT15"],
+    "mechanism": "Reduced TPMT or NUDT15 activity increases thiopurine toxicity risk.",
+    "source": "CPIC"
+  },
+
+  "CAPECITABINE": {
+    "primary_gene": "DPYD",
+    "all_genes": ["DPYD"],
+    "gene": "DPYD",
+    "mechanism": "DPYD deficiency reduces fluoropyrimidine metabolism leading to toxicity.",
+    "source": "CPIC"
+  },
+
+  "FLUOROURACIL": {
+    "primary_gene": "DPYD",
+    "all_genes": ["DPYD"],
+    "gene": "DPYD",
+    "mechanism": "DPYD deficiency reduces fluoropyrimidine metabolism leading to toxicity.",
+    "source": "CPIC"
+  }
+}

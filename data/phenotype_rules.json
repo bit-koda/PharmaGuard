@@ -1,0 +1,228 @@
+{
+  "CODEINE": {
+    "gene": "CYP2D6",
+    "phenotype_rules": {
+      "PM": {
+        "risk_label": "Ineffective",
+        "severity": "moderate",
+        "recommendation": "Avoid codeine; use alternative analgesic",
+        "confidence": 0.9
+      },
+      "IM": {
+        "risk_label": "Reduced Effect",
+        "severity": "low",
+        "recommendation": "Monitor response or consider alternative",
+        "confidence": 0.7
+      },
+      "NM": {
+        "risk_label": "Safe",
+        "severity": "none",
+        "recommendation": "Use standard dosing",
+        "confidence": 0.95
+      },
+      "URM": {
+        "risk_label": "Toxic",
+        "severity": "critical",
+        "recommendation": "Avoid codeine due to toxicity risk",
+        "confidence": 0.95
+      },
+      "RM": {
+        "risk_label": "Increased Effect",
+        "severity": "low",
+        "recommendation": "Monitor for side effects",
+        "confidence": 0.7
+      },
+      "Unknown": {
+        "risk_label": "Unknown",
+        "severity": "none",
+        "recommendation": "Insufficient genotype data",
+        "confidence": 0.3
+      }
+    }
+  },
+
+  "CLOPIDOGREL": {
+    "gene": "CYP2C19",
+    "phenotype_rules": {
+      "PM": {
+        "risk_label": "Reduced Efficacy",
+        "severity": "high",
+        "recommendation": "Use prasugrel or ticagrelor",
+        "confidence": 0.95
+      },
+      "IM": {
+        "risk_label": "Reduced Efficacy",
+        "severity": "moderate",
+        "recommendation": "Consider alternative therapy",
+        "confidence": 0.8
+      },
+      "NM": {
+        "risk_label": "Safe",
+        "severity": "none",
+        "recommendation": "Standard dosing",
+        "confidence": 0.95
+      },
+      "RM": {
+        "risk_label": "Safe",
+        "severity": "none",
+        "recommendation": "Standard dosing",
+        "confidence": 0.9
+      },
+      "URM": {
+        "risk_label": "Bleeding Risk",
+        "severity": "low",
+        "recommendation": "Monitor bleeding",
+        "confidence": 0.8
+      },
+      "Unknown": {
+        "risk_label": "Unknown",
+        "severity": "none",
+        "recommendation": "Insufficient data",
+        "confidence": 0.3
+      }
+    }
+  },
+
+  "WARFARIN": {
+    "genes": ["CYP2C9", "VKORC1"],
+    "combined_risk_matrix": {
+      "PM+Highly Sensitive":  {"risk_label": "High Sensitivity",     "severity": "high",     "recommendation": "Significantly reduce warfarin dose and monitor INR very closely", "confidence": 0.95},
+      "PM+Sensitive":         {"risk_label": "High Sensitivity",     "severity": "high",     "recommendation": "Reduce warfarin dose and monitor INR closely", "confidence": 0.95},
+      "PM+Normal":            {"risk_label": "High Sensitivity",     "severity": "high",     "recommendation": "Reduce warfarin dose based on CYP2C9 PM status", "confidence": 0.90},
+      "PM+Unknown":           {"risk_label": "High Sensitivity",     "severity": "high",     "recommendation": "Reduce warfarin dose based on CYP2C9 PM status; obtain VKORC1 genotype", "confidence": 0.80},
+      "IM+Highly Sensitive":  {"risk_label": "High Sensitivity",     "severity": "high",     "recommendation": "Lower starting dose and monitor INR closely", "confidence": 0.95},
+      "IM+Sensitive":         {"risk_label": "Moderate Sensitivity", "severity": "moderate",  "recommendation": "Consider reduced starting dose", "confidence": 0.85},
+      "IM+Normal":            {"risk_label": "Moderate Sensitivity", "severity": "moderate",  "recommendation": "Consider modest dose reduction", "confidence": 0.80},
+      "IM+Unknown":           {"risk_label": "Moderate Sensitivity", "severity": "moderate",  "recommendation": "Consider dose reduction based on CYP2C9 IM status", "confidence": 0.70},
+      "NM+Highly Sensitive":  {"risk_label": "High Sensitivity",     "severity": "moderate",  "recommendation": "Reduce dose for VKORC1 high sensitivity", "confidence": 0.90},
+      "NM+Sensitive":         {"risk_label": "Moderate Sensitivity", "severity": "low",      "recommendation": "Consider modest dose reduction for VKORC1 sensitivity", "confidence": 0.85},
+      "NM+Normal":            {"risk_label": "Standard Dose",        "severity": "none",     "recommendation": "Use standard warfarin dosing", "confidence": 0.90},
+      "NM+Unknown":           {"risk_label": "Standard Dose",        "severity": "none",     "recommendation": "Standard dosing; consider VKORC1 testing", "confidence": 0.70},
+      "Unknown+Highly Sensitive": {"risk_label": "Moderate Sensitivity", "severity": "moderate", "recommendation": "Reduce dose for VKORC1 high sensitivity; obtain CYP2C9 genotype", "confidence": 0.70},
+      "Unknown+Sensitive":    {"risk_label": "Moderate Sensitivity", "severity": "low",      "recommendation": "Consider dose reduction; incomplete genotype data", "confidence": 0.60},
+      "Unknown+Normal":       {"risk_label": "Unknown",              "severity": "none",     "recommendation": "Insufficient CYP2C9 data for warfarin dosing", "confidence": 0.40},
+      "Unknown+Unknown":      {"risk_label": "Unknown",              "severity": "none",     "recommendation": "Insufficient genotype data for warfarin dosing", "confidence": 0.30}
+    },
+    "alternative_drugs": ["Apixaban", "Rivaroxaban", "Dabigatran", "Edoxaban"]
+  },
+
+  "SIMVASTATIN": {
+    "gene": "SLCO1B1",
+    "phenotype_rules": {
+      "Poor Function": {
+        "risk_label": "Myopathy Risk",
+        "severity": "high",
+        "recommendation": "Avoid simvastatin or use lowest dose; consider alternative statin",
+        "confidence": 0.95
+      },
+      "Decreased Function": {
+        "risk_label": "Increased Risk",
+        "severity": "moderate",
+        "recommendation": "Use lower dose or alternative statin",
+        "confidence": 0.85
+      },
+      "Normal Function": {
+        "risk_label": "Safe",
+        "severity": "none",
+        "recommendation": "Standard dosing",
+        "confidence": 0.95
+      },
+      "Unknown": {
+        "risk_label": "Unknown",
+        "severity": "none",
+        "recommendation": "Insufficient data",
+        "confidence": 0.3
+      }
+    }
+  },
+
+  "AZATHIOPRINE": {
+    "genes": ["TPMT", "NUDT15"],
+    "phenotype_rules": {
+      "Poor": {
+        "risk_label": "Severe Toxicity Risk",
+        "severity": "critical",
+        "recommendation": "Avoid azathioprine or drastically reduce dose to 10% of standard",
+        "confidence": 0.95
+      },
+      "Intermediate": {
+        "risk_label": "Moderate Toxicity Risk",
+        "severity": "high",
+        "recommendation": "Start at 20-50% of standard dose with close monitoring",
+        "confidence": 0.90
+      },
+      "Normal": {
+        "risk_label": "Standard Dose",
+        "severity": "none",
+        "recommendation": "Standard dosing",
+        "confidence": 0.90
+      },
+      "Unknown": {
+        "risk_label": "Unknown",
+        "severity": "none",
+        "recommendation": "Insufficient TPMT/NUDT15 data for assessment",
+        "confidence": 0.30
+      }
+    }
+  },
+
+  "CAPECITABINE": {
+    "gene": "DPYD",
+    "phenotype_rules": {
+      "Intermediate": {
+        "risk_label": "Toxicity Risk",
+        "severity": "high",
+        "recommendation": "Start at 50% dose",
+        "confidence": 0.95
+      },
+      "Poor": {
+        "risk_label": "Severe Toxicity",
+        "severity": "critical",
+        "recommendation": "Avoid fluoropyrimidines",
+        "confidence": 0.98
+      },
+      "Normal": {
+        "risk_label": "Safe",
+        "severity": "none",
+        "recommendation": "Standard dosing",
+        "confidence": 0.95
+      },
+      "Unknown": {
+        "risk_label": "Unknown",
+        "severity": "none",
+        "recommendation": "Insufficient data",
+        "confidence": 0.3
+      }
+    }
+  },
+
+  "FLUOROURACIL": {
+    "gene": "DPYD",
+    "phenotype_rules": {
+      "Intermediate": {
+        "risk_label": "Toxicity Risk",
+        "severity": "high",
+        "recommendation": "Start at 50% dose",
+        "confidence": 0.95
+      },
+      "Poor": {
+        "risk_label": "Severe Toxicity",
+        "severity": "critical",
+        "recommendation": "Avoid fluoropyrimidines",
+        "confidence": 0.98
+      },
+      "Normal": {
+        "risk_label": "Safe",
+        "severity": "none",
+        "recommendation": "Standard dosing",
+        "confidence": 0.95
+      },
+      "Unknown": {
+        "risk_label": "Unknown",
+        "severity": "none",
+        "recommendation": "Insufficient data",
+        "confidence": 0.3
+      }
+    }
+  }
+}

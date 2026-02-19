@@ -1,0 +1,409 @@
+[
+  {
+    "patient_id": "PATIENT_001",
+    "drug": "CODEINE",
+    "timestamp": "2026-02-19T23:04:57.950566",
+    "risk assessment": {
+      "risk label": "Safe",
+      "confidence_score": 0.95,
+      "severity": "none"
+    },
+    "pharmacogenomic profile": {
+      "primary gene": "CYP2D6",
+      "diplotype": "*1/*2",
+      "phenotype": "NM",
+      "detected_variants": [
+        {
+          "gene": "CYP2D6",
+          "rsid": "rs28371725",
+          "star": "*41",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2D6",
+          "rsid": "rs5030655",
+          "star": "*6",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2D6",
+          "rsid": "rs16947",
+          "star": "*2",
+          "genotype": "0/1"
+        },
+        {
+          "gene": "CYP2D6",
+          "rsid": "rs1135840",
+          "star": "*4",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2D6",
+          "rsid": "rs3892097",
+          "star": "*4",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2D6",
+          "rsid": "rs1065852",
+          "star": "*4",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2D6",
+          "rsid": "rs28371706",
+          "star": "*10",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2D6",
+          "rsid": "rs59421388",
+          "star": "*17",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2D6",
+          "rsid": "rs28371725",
+          "star": "*41",
+          "genotype": "0/0"
+        }
+      ]
+    },
+    "clinical recommendation": {
+      "action": "Use standard dosing"
+    },
+    "llm generated explanation": {
+      "summary": "The patient is identified as a CYP2D6 Normal Metabolizer (NM) with a *1/*2 diplotype, characterized by the presence of the functional rs16947 variant. This genotype predicts normal enzymatic activity, resulting in standard rates of conversion from the prodrug codeine to its active metabolite, morphine, with no significant increase in risk for toxicity or subtherapeutic effects.",
+      "mechanism": "Codeine is an opioid prodrug that undergoes hepatic metabolism via two primary pathways: N-demethylation to norcodeine (via CYP3A4) and O-demethylation to morphine (via CYP2D6). The O-demethylation pathway, while accounting for only about 5-10% of codeine clearance, is responsible for the drug's analgesic properties as morphine has a significantly higher affinity for the mu-opioid receptor. In this individual, the *1 (wild-type) and *2 (rs16947) alleles both encode fully functional CYP2D6 enzymes. This results in normal catalytic turnover and expected plasma concentrations of morphine, maintaining the intended metabolic balance between bioactivation and alternative elimination routes like UGT2B7-mediated glucuronidation.",
+      "recommendation_rationale": "Based on CPIC guidelines, individuals with a CYP2D6 activity score of 2.0 (Normal Metabolizer) are expected to have a normal analgesic response to codeine. Because the metabolic conversion rate is within the standard physiological range, the patient is not at an increased risk for the respiratory depression associated with Ultra-rapid Metabolizers, nor the therapeutic failure associated with Poor Metabolizers. Clinical justification supports the use of standard, label-recommended dosing.",
+      "limitations": "This interpretation is based on the specific variants interrogated per CPIC guidelines and may not capture rare or de novo variants, nor does it account for CYP2D6 copy number variations (duplications/deletions) or phenoconversion caused by concomitant administration of CYP2D6 inhibitors or inducers."
+    },
+    "quality_metrics": {
+      "vcf_parsing_success": true
+    }
+  },
+  {
+    "patient_id": "PATIENT_001",
+    "drug": "CLOPIDOGREL",
+    "timestamp": "2026-02-19T23:04:57.950566",
+    "risk assessment": {
+      "risk label": "Safe",
+      "confidence_score": 0.95,
+      "severity": "none"
+    },
+    "pharmacogenomic profile": {
+      "primary gene": "CYP2C19",
+      "diplotype": "*1/*1",
+      "phenotype": "NM",
+      "detected_variants": [
+        {
+          "gene": "CYP2C19",
+          "rsid": "rs4244285",
+          "star": "*2",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2C19",
+          "rsid": "rs28399504",
+          "star": "*4",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2C19",
+          "rsid": "rs12769205",
+          "star": "*17",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2C19",
+          "rsid": "rs17884712",
+          "star": "*9",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2C19",
+          "rsid": "rs4986893",
+          "star": "*3",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2C19",
+          "rsid": "rs56337013",
+          "star": "*6",
+          "genotype": "0/0"
+        }
+      ]
+    },
+    "clinical recommendation": {
+      "action": "Standard dosing"
+    },
+    "llm generated explanation": {
+      "summary": "The patient is a CYP2C19 Normal Metabolizer (NM) with a *1/*1 diplotype, characterized by the absence of loss-of-function alleles such as *2 (rs4244285), *3 (rs4986893), or gain-of-function alleles like *17 (rs12769205). This phenotype is associated with standard metabolic activation of clopidogrel and a baseline risk for major adverse cardiovascular events (MACE) and stent thrombosis.",
+      "mechanism": "Clopidogrel is a thienopyridine prodrug that requires a two-step hepatic bioactivation to exert its antiplatelet effect. The CYP2C19 enzyme is a critical mediator in both the conversion of clopidogrel to 2-oxo-clopidogrel and the subsequent conversion to the active thiol metabolite. In a Normal Metabolizer (*1/*1), the CYP2C19 enzyme maintains full catalytic activity, ensuring the generation of sufficient active metabolite concentrations to irreversibly bind and antagonize the P2Y12 adenosine diphosphate (ADP) receptor on the platelet surface, effectively inhibiting platelet aggregation.",
+      "recommendation_rationale": "Clinical Pharmacogenetics Implementation Consortium (CPIC) guidelines categorize the *1/*1 diplotype as having normal enzyme activity, which results in expected levels of the active metabolite and therapeutic platelet inhibition. Because the patient is not at an increased risk for clopidogrel resistance or reduced efficacy compared to the general population, standard FDA-labeled dosing (e.g., a 300\u2013600 mg loading dose followed by 75 mg daily) is recommended.",
+      "limitations": "This interpretation is based solely on the detection of the specific alleles tested (e.g., *2, *3, *4, *6, *9, *17) per CPIC guidelines and may not identify rare or novel variants that could affect CYP2C19 function. Phenotypic expression can also be influenced by non-genetic factors such as drug-drug interactions with CYP2C19 inhibitors (e.g., omeprazole), age, and comorbidities like diabetes mellitus."
+    },
+    "quality_metrics": {
+      "vcf_parsing_success": true
+    }
+  },
+  {
+    "patient_id": "PATIENT_001",
+    "drug": "WARFARIN",
+    "timestamp": "2026-02-19T23:04:57.950566",
+    "risk assessment": {
+      "risk label": "Standard Dose",
+      "confidence_score": 0.7,
+      "severity": "none"
+    },
+    "pharmacogenomic profile": {
+      "primary gene": "CYP2C9",
+      "diplotype": "*1/*1",
+      "phenotype": "NM",
+      "detected_variants": [
+        {
+          "gene": "CYP2C9",
+          "rsid": "rs72558187",
+          "star": "*12",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2C9",
+          "rsid": "rs1057910",
+          "star": "*3",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2C9",
+          "rsid": "rs1799853",
+          "star": "*2",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "CYP2C9",
+          "rsid": "rs9332131",
+          "star": "*5",
+          "genotype": "0/0"
+        }
+      ]
+    },
+    "clinical recommendation": {
+      "action": "No VKORC1 variants detected in uploaded VCF. WARFARIN requires CYP2C9 and VKORC1 genotype data. Standard dosing; consider VKORC1 testing"
+    },
+    "llm generated explanation": {
+      "summary": "The patient is classified as a CYP2C9 Normal Metabolizer (NM) with a *1/*1 diplotype, as evidenced by the absence of risk alleles at rs1799853 (*2), rs1057910 (*3), rs9332131 (*5), and rs72558187 (*12). This genotype is associated with standard metabolic clearance of S-warfarin and an expected therapeutic response requiring a conventional starting dose.",
+      "mechanism": "Warfarin is a racemic mixture where S-warfarin is 3-5 times more potent than R-warfarin in inhibiting the Vitamin K epoxide reductase complex (VKORC1). S-warfarin is primarily eliminated through oxidative metabolism via the hepatic cytochrome P450 2C9 (CYP2C9) enzyme. The *1/*1 wild-type diplotype results in normal enzymatic catalytic activity, ensuring the physiological rate of conversion of S-warfarin to its inactive 7- and 6-hydroxywarfarin metabolites is maintained, thus preventing excessive systemic drug accumulation.",
+      "recommendation_rationale": "Clinical justification for standard dosing is based on the patient's normal CYP2C9 metabolic capacity, which suggests they are not at an increased risk for the supratherapeutic INR levels typically seen in carriers of decreased function alleles. While CYP2C9 status is optimal, the lack of VKORC1 genotype data\u2014which determines the sensitivity of the target enzyme to warfarin\u2014requires that clinicians follow standard titration protocols with frequent INR monitoring to reach the target therapeutic range.",
+      "limitations": "This interpretation is limited to the detected CYP2C9 variants specified in the VCF per CPIC guidelines and may not account for rare or de novo mutations. Furthermore, the absence of VKORC1 (rs9923231) and CYP4F2 (rs2108622) genetic data restricts the ability to use comprehensive dosing algorithms, which may influence the accuracy of the predicted maintenance dose."
+    },
+    "quality_metrics": {
+      "vcf_parsing_success": true
+    }
+  },
+  {
+    "patient_id": "PATIENT_001",
+    "drug": "SIMVASTATIN",
+    "timestamp": "2026-02-19T23:04:57.950566",
+    "risk assessment": {
+      "risk label": "Safe",
+      "confidence_score": 0.95,
+      "severity": "none"
+    },
+    "pharmacogenomic profile": {
+      "primary gene": "SLCO1B1",
+      "diplotype": "*1/*1",
+      "phenotype": "Normal Function",
+      "detected_variants": [
+        {
+          "gene": "SLCO1B1",
+          "rsid": "rs4149056",
+          "star": "*5",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "SLCO1B1",
+          "rsid": "rs2306283",
+          "star": "*1B",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "SLCO1B1",
+          "rsid": "rs11045819",
+          "star": "*15",
+          "genotype": "0/0"
+        }
+      ]
+    },
+    "clinical recommendation": {
+      "action": "Standard dosing"
+    },
+    "llm generated explanation": {
+      "summary": "The patient carries the SLCO1B1 *1/*1 diplotype, characterized by wild-type genotypes at rs4149056, rs2306283, and rs11045819, resulting in a Normal Function phenotype. This genetic profile is associated with a typical risk for statin-associated muscle symptoms (SAMS) and standard systemic exposure to simvastatin acid.",
+      "mechanism": "The SLCO1B1 gene encodes the Organic Anion Transporting Polypeptide 1B1 (OATP1B1), a multi-specific influx transporter located on the basolateral membrane of hepatocytes. OATP1B1 facilitates the sodium-independent hepatic uptake of simvastatin acid (the active hydroxy acid metabolite) from the portal blood into the liver, which is the site of action for HMG-CoA reductase inhibition. The *1/*1 diplotype indicates normal protein expression and plasma membrane localization of the transporter, ensuring efficient clearance of simvastatin from systemic circulation and maintaining a low area under the curve (AUC), thereby limiting off-target exposure to peripheral skeletal muscle tissue.",
+      "recommendation_rationale": "Based on CPIC (Clinical Pharmacogenetics Implementation Consortium) guidelines, patients with the SLCO1B1 Normal Function phenotype have no genetic contraindication to standard simvastatin dosing. The absence of the c.521T>C (rs4149056) variant suggests that the patient is at the lowest genetically determined risk for developing myopathy or rhabdomyolysis at conventional doses.",
+      "limitations": "This interpretation is limited to the specific SLCO1B1 variants assayed as per CPIC guidelines and may not account for rare or novel variants not included in the panel. Clinical outcomes can also be influenced by non-genetic factors such as age, renal function, and concomitant use of potent CYP3A4 inhibitors or other OATP1B1 substrates."
+    },
+    "quality_metrics": {
+      "vcf_parsing_success": true
+    }
+  },
+  {
+    "patient_id": "PATIENT_001",
+    "drug": "AZATHIOPRINE",
+    "timestamp": "2026-02-19T23:04:57.950566",
+    "risk assessment": {
+      "risk label": "Standard Dose",
+      "confidence_score": 0.9,
+      "severity": "none"
+    },
+    "pharmacogenomic profile": {
+      "primary gene": "TPMT",
+      "diplotype": "*1/*1",
+      "phenotype": "Normal",
+      "detected_variants": [
+        {
+          "gene": "TPMT",
+          "rsid": "rs1800584",
+          "star": "*3C",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "TPMT",
+          "rsid": "rs1800460",
+          "star": "*3A",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "TPMT",
+          "rsid": "rs1800462",
+          "star": "*2",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "TPMT",
+          "rsid": "rs1142345",
+          "star": "*3B",
+          "genotype": "0/0"
+        }
+      ]
+    },
+    "clinical recommendation": {
+      "action": "Standard dosing"
+    },
+    "llm generated explanation": {
+      "summary": "The patient carries a TPMT *1/*1 diplotype, characterized by the absence of risk variants at rs1800584 (*3C), rs1800460 (*3A), rs1800462 (*2), and rs1142345 (*3B), resulting in a Normal Metabolizer phenotype. This profile indicates a standard risk for thiopurine-induced myelosuppression when initiating azathioprine therapy.",
+      "mechanism": "Azathioprine is a prodrug non-enzymatically converted to 6-mercaptopurine (6-MP). Thiopurine S-methyltransferase (TPMT) catalyzes the S-methylation of 6-MP into the inactive metabolite 6-methylmercaptopurine (6-MMP), competing with the hypoxanthine-guanine phosphoribosyltransferase (HGPRT) pathway that produces active thioguanine nucleotides (TGNs). In individuals with the *1/*1 diplotype, TPMT protein folding, stability, and catalytic velocity are optimal, preventing the shunting of 6-MP towards excessive TGN accumulation, which otherwise causes hematopoietic toxicity through DNA incorporation and inhibition of de novo purine synthesis.",
+      "recommendation_rationale": "Clinical guidelines from CPIC recommend starting azathioprine at standard therapeutic doses for TPMT Normal Metabolizers. Because the patient possesses full enzymatic capacity to inactivate thiopurine intermediates, they are at low risk for early-onset, dose-dependent leucopenia or pancytopenia compared to intermediate or poor metabolizers.",
+      "limitations": "This interpretation is based on the detection of specific common variants per CPIC guidelines and may not identify rare or novel TPMT mutations. Furthermore, this result does not account for variation in NUDT15, another critical determinant of thiopurine toxicity, or non-genetic factors such as drug-drug interactions (e.g., allopurinol)."
+    },
+    "quality_metrics": {
+      "vcf_parsing_success": true
+    }
+  },
+  {
+    "patient_id": "PATIENT_001",
+    "drug": "CAPECITABINE",
+    "timestamp": "2026-02-19T23:04:57.950566",
+    "risk assessment": {
+      "risk label": "Safe",
+      "confidence_score": 0.95,
+      "severity": "none"
+    },
+    "pharmacogenomic profile": {
+      "primary gene": "DPYD",
+      "diplotype": "*1/*1",
+      "phenotype": "Normal",
+      "detected_variants": [
+        {
+          "gene": "DPYD",
+          "rsid": "rs3918290",
+          "star": "*2A",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "DPYD",
+          "rsid": "rs1801265",
+          "star": "*5",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "DPYD",
+          "rsid": "rs67376798",
+          "star": "*13",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "DPYD",
+          "rsid": "rs1801159",
+          "star": "*6",
+          "genotype": "0/0"
+        }
+      ]
+    },
+    "clinical recommendation": {
+      "action": "Standard dosing"
+    },
+    "llm generated explanation": {
+      "summary": "The patient carries the DPYD *1/*1 diplotype, indicating a Normal Metabolizer phenotype based on the absence of the tested risk-conferring variants rs3918290 (*2A), rs1801159 (*6), rs67376798 (*13), and rs1801265 (*5). This genotype is associated with a standard risk for severe fluoropyrimidine-associated toxicities, such as myelosuppression, mucositis, and neurotoxicity.",
+      "mechanism": "Dihydropyrimidine dehydrogenase (DPD), the gene product of DPYD, is the rate-limiting enzyme in the catabolic pathway of 5-fluorouracil (5-FU), which is the active metabolite of the prodrug capecitabine. In individuals with normal enzymatic activity, approximately 80% of the administered dose is rapidly converted into the inactive metabolite 5-fluoro-5,6-dihydrofluorouracil (FUH2) via the reduction of the C5-C6 double bond. The *1/*1 diplotype ensures efficient clearance of 5-FU, preventing the systemic accumulation of the drug and limiting the proportion available for anabolic conversion into cytotoxic nucleotides like FdUMP, which inhibits thymidylate synthase.",
+      "recommendation_rationale": "Clinical justification for standard dosing is based on the CPIC guidelines for DPYD, which categorize *1/*1 individuals as having a normal activity score (AS=2.0). Because these patients possess full enzymatic capacity to catabolize fluoropyrimidines, the risk of profound toxicity-related adverse events is not genetically increased, allowing for the initiation of therapy at the manufacturer's recommended starting dose.",
+      "limitations": "This interpretation is based strictly on the detection of the specified DPYD variants according to CPIC consensus guidelines and may not capture rare or novel variants, nor does it account for non-genetic factors such as renal function, hepatic impairment, or drug-drug interactions that may influence capecitabine tolerability."
+    },
+    "quality_metrics": {
+      "vcf_parsing_success": true
+    }
+  },
+  {
+    "patient_id": "PATIENT_001",
+    "drug": "FLUOROURACIL",
+    "timestamp": "2026-02-19T23:04:57.950566",
+    "risk assessment": {
+      "risk label": "Safe",
+      "confidence_score": 0.95,
+      "severity": "none"
+    },
+    "pharmacogenomic profile": {
+      "primary gene": "DPYD",
+      "diplotype": "*1/*1",
+      "phenotype": "Normal",
+      "detected_variants": [
+        {
+          "gene": "DPYD",
+          "rsid": "rs3918290",
+          "star": "*2A",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "DPYD",
+          "rsid": "rs1801265",
+          "star": "*5",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "DPYD",
+          "rsid": "rs67376798",
+          "star": "*13",
+          "genotype": "0/0"
+        },
+        {
+          "gene": "DPYD",
+          "rsid": "rs1801159",
+          "star": "*6",
+          "genotype": "0/0"
+        }
+      ]
+    },
+    "clinical recommendation": {
+      "action": "Standard dosing"
+    },
+    "llm generated explanation": {
+      "summary": "The patient possesses the DPYD *1/*1 diplotype, characterized by the absence of high-risk variants rs3918290 (*2A), rs1801265 (*5), rs67376798 (*13), and rs1801159 (*6), resulting in a Normal Metabolizer phenotype. This status indicates a standard risk of severe fluoropyrimidine-associated toxicities, such as myelosuppression, mucositis, and neurotoxicity.",
+      "mechanism": "Dihydropyrimidine dehydrogenase (DPD), the enzyme encoded by the DPYD gene, is the rate-limiting step in the catabolic inactivation of fluorouracil (5-FU), converting it into 5-fluoro-5,6-dihydrofluorouracil (FUH2). In individuals with the *1/*1 genotype, DPD enzymatic activity is optimal, allowing for the systemic clearance of approximately 80% of the administered dose. This efficient catabolism regulates the availability of 5-FU for conversion into active cytotoxic metabolites, including 5-fluoro-2'-deoxyuridine-5'-monophosphate (FdUMP), which inhibits thymidylate synthase, and 5-fluorouridine-5'-triphosphate (FUTP), which incorporates into RNA, thereby maintaining a therapeutic balance between efficacy and systemic toxicity.",
+      "recommendation_rationale": "Clinical guidelines from the Clinical Pharmacogenetics Implementation Consortium (CPIC) recommend standard fluorouracil dosing for individuals with a DPYD Normal Metabolizer phenotype (DPD activity score of 2.0). There is no evidence of reduced clearance that would necessitate dose reductions, and a full starting dose is justified to achieve the intended pharmacodynamic effect on tumor cell proliferation.",
+      "limitations": "This interpretation is based solely on the detection of specified DPYD variants as per CPIC guidelines and may not identify other rare or novel variants that could affect DPD activity. Clinical factors such as renal function, age, and drug-drug interactions must also be considered in the overall safety profile."
+    },
+    "quality_metrics": {
+      "vcf_parsing_success": true
+    }
+  }
+]
