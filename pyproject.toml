@@ -8,7 +8,6 @@ dependencies = [
     "python-multipart",
     "pydantic",
     "python-dotenv",
-    "google-generativeai",
 ]
 
 [tool.pytest.ini_options]

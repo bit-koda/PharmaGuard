@@ -3,7 +3,6 @@ uvicorn
 python-multipart
 pydantic
 python-dotenv
-google-generativeai
 pytest
 pytest-asyncio
 httpx

@@ -27,10 +27,23 @@ export async function analyzeVCF(vcfFile, drugs, patientId = null, onProgress = 
     onProgress('Analyzing — this may take a moment…');
   }
 
-  const res = await fetch(endpoint, {
-    method: 'POST',
-    body: form,
-  });
+  // Timeout guard for production (Vercel serverless has 60s max)
+  const controller = new AbortController();
+  const timeoutId = !isLocal ? setTimeout(() => controller.abort(), 55000) : null;
+
+  let res;
+  try {
+    res = await fetch(endpoint, {
+      method: 'POST',
+      body: form,
+      signal: controller.signal,
+    });
+  } catch (err) {
+    if (timeoutId) clearTimeout(timeoutId);
+    if (err.name === 'AbortError') throw new Error('Analysis timed out. Please try again with fewer drugs.');
+    throw err;
+  }
+  if (timeoutId) clearTimeout(timeoutId);
 
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));

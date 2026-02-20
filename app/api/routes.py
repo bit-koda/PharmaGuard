@@ -6,6 +6,9 @@ import json
 import uuid
 from pathlib import Path
 from typing import Optional
+import logging
+
+logger = logging.getLogger(__name__)
 
 from app.services.vcf_service import parse_vcf, extract_sample_id
 from app.services.pgx_service import interpret_variants
@@ -167,16 +170,45 @@ async def analyze(
 
     coverage_by_drug = {c["drug"]: c for c in coverage}
 
-    if len(supported) == 1:
-        response = await asyncio.to_thread(
-            build_result, supported[0], coverage_by_drug.get(supported[0].upper(), {})
-        )
-    else:
-        # Run all drug analyses in parallel threads
-        response = list(await asyncio.gather(*[
-            asyncio.to_thread(build_result, drug, coverage_by_drug.get(drug.upper(), {}))
-            for drug in supported
-        ]))
+    try:
+        if len(supported) == 1:
+            response = await asyncio.wait_for(
+                asyncio.to_thread(
+                    build_result, supported[0], coverage_by_drug.get(supported[0].upper(), {})
+                ),
+                timeout=50,
+            )
+        else:
+            response = list(await asyncio.wait_for(
+                asyncio.gather(*[
+                    asyncio.to_thread(build_result, drug, coverage_by_drug.get(drug.upper(), {}))
+                    for drug in supported
+                ]),
+                timeout=50,
+            ))
+    except asyncio.TimeoutError:
+        logger.warning("Analyze timed out – returning fallback results")
+        # Build results without LLM to avoid timeout
+        from app.services.llm_service import _build_fallback
+        results = []
+        for drug in supported:
+            pgx_profile, risk_results = interpret_variants(variants, drug)
+            explanation = _build_fallback(pgx_profile, risk_results)
+            results.append({
+                "patient_id": patient_id,
+                "drug": risk_results["drug"],
+                "timestamp": timestamp,
+                "risk assessment": {
+                    "risk label": risk_results["risk_label"],
+                    "confidence_score": risk_results["confidence_score"],
+                    "severity": risk_results["severity"],
+                },
+                "pharmacogenomic profile": pgx_profile,
+                "clinical recommendation": risk_results["recommendation"],
+                "llm generated explanation": explanation,
+                "quality_metrics": {"vcf_parsing_success": True},
+            })
+        response = results[0] if len(results) == 1 else results
 
     # Persist to history
     save_report(patient_id, response)

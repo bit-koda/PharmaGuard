@@ -1,9 +1,14 @@
 import json
 import os
+import re
+import urllib.request
+import urllib.error
 
 from dotenv import load_dotenv
 
 load_dotenv()
+
+_GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
 
 
 MECHANISM_DB = {
@@ -75,13 +80,7 @@ def generate_explanation(profile, risk):
         return _build_fallback(profile, risk)
 
     try:
-        import google.generativeai as genai
-        from google.generativeai.generative_models import GenerativeModel
-
-        genai.configure(api_key=api_key)
-        model = GenerativeModel("gemini-2.0-flash")
-
-        prompt = {
+        prompt_data = {
             "drug": risk.get("drug"),
             "gene": profile.get("primary_gene"),
             "phenotype": profile.get("phenotype"),
@@ -112,15 +111,27 @@ def generate_explanation(profile, risk):
             "\n"
             "Use precise pharmacological terminology. Avoid generic phrases like 'genetic variation alters metabolism'."
         )
-        user = f"Generate explanation for: {json.dumps(prompt, ensure_ascii=True)}"
+        user_msg = f"Generate explanation for: {json.dumps(prompt_data, ensure_ascii=True)}"
 
-        response = model.generate_content(
-            [system, user],
-            request_options={"timeout": 15},
+        # Direct REST API call — avoids heavy SDK import (saves ~3s cold start)
+        body = json.dumps({
+            "contents": [
+                {"role": "user", "parts": [{"text": system + "\n\n" + user_msg}]}
+            ],
+            "generationConfig": {"temperature": 0.3, "maxOutputTokens": 1024},
+        }).encode("utf-8")
+
+        url = f"{_GEMINI_URL}?key={api_key}"
+        req = urllib.request.Request(
+            url,
+            data=body,
+            headers={"Content-Type": "application/json"},
+            method="POST",
         )
-        text = response.text.strip()
-        # Strip markdown code fences reliably
-        import re
+        with urllib.request.urlopen(req, timeout=6) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+
+        text = result["candidates"][0]["content"]["parts"][0]["text"].strip()
         text = re.sub(r"^```(?:json)?\s*", "", text)
         text = re.sub(r"\s*```$", "", text)
         return json.loads(text)
