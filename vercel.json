@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/analyze", "destination": "/api/index" },
+    { "source": "/analyze/:path*", "destination": "/api/index" },
+    { "source": "/history", "destination": "/api/index" },
+    { "source": "/history/:path*", "destination": "/api/index" },
+    { "source": "/debug/:path*", "destination": "/api/index" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

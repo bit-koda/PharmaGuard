@@ -1,3 +1,16 @@
+[project]
+name = "pharmaguard"
+version = "1.0.0"
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "python-multipart",
+    "pydantic",
+    "python-dotenv",
+    "google-generativeai",
+]
+
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["tests"]

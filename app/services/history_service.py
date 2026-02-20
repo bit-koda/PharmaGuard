@@ -4,10 +4,14 @@ Thread-safe via filelock-style atomicity (single-process FastAPI is fine).
 """
 
 import json
+import os
 from pathlib import Path
 from threading import Lock
 
-_HISTORY_DIR = Path(__file__).resolve().parent.parent / "data" / "history"
+if os.environ.get("VERCEL"):
+    _HISTORY_DIR = Path("/tmp/pharma_history")
+else:
+    _HISTORY_DIR = Path(__file__).resolve().parent.parent / "data" / "history"
 _COUNTER_FILE = _HISTORY_DIR / "_counter.json"
 _lock = Lock()
 
