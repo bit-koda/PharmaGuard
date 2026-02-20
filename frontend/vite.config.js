@@ -11,5 +11,8 @@ export default defineConfig({
       '/debug': 'http://127.0.0.1:8000',
       '/history': 'http://127.0.0.1:8000',
     },
+    watch: {
+      ignored: ['**/data/**', '**/app/**', '**/__pycache__/**', '**/services/**', '**/models/**', '**/utils/**'],
+    },
   },
 })
