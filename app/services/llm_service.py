@@ -79,7 +79,7 @@ def generate_explanation(profile, risk):
         from google.generativeai.generative_models import GenerativeModel
 
         genai.configure(api_key=api_key)
-        model = GenerativeModel("gemini-flash-latest")
+        model = GenerativeModel("gemini-2.0-flash")
 
         prompt = {
             "drug": risk.get("drug"),

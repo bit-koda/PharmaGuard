@@ -11,6 +11,7 @@ import PatientHistory from './components/PatientHistory';
 import PatientInfo from './components/PatientInfo';
 import RawJsonViewer from './components/RawJsonViewer';
 import { analyzeVCF } from './api/client';
+import { saveReportLocal } from './api/localHistory';
 import { Send, RotateCcw } from 'lucide-react';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
     try {
       const data = await analyzeVCF(file, selectedDrugs, null, (step) => setStatus(step));
       setResult(data);
+      saveReportLocal(data);
       setHistoryKey((k) => k + 1);
     } catch (err) {
       setError(err.message || 'Something went wrong');

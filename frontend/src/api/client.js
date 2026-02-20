@@ -18,8 +18,14 @@ export async function analyzeVCF(vcfFile, drugs, patientId = null, onProgress = 
   form.append('drugs', drugs.join(','));
   if (patientId) form.append('patient_id', patientId);
 
-  // Use streaming endpoint when progress callback is provided
-  const endpoint = onProgress ? `${API_BASE}/analyze/stream` : `${API_BASE}/analyze`;
+  // Use streaming only on localhost (dev); Vercel serverless buffers SSE
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const useStream = onProgress && isLocal;
+  const endpoint = useStream ? `${API_BASE}/analyze/stream` : `${API_BASE}/analyze`;
+
+  if (onProgress && !isLocal) {
+    onProgress('Analyzing — this may take a moment…');
+  }
 
   const res = await fetch(endpoint, {
     method: 'POST',
@@ -32,7 +38,7 @@ export async function analyzeVCF(vcfFile, drugs, patientId = null, onProgress = 
     throw new Error(msg);
   }
 
-  if (!onProgress) return res.json();
+  if (!useStream) return res.json();
 
   // Parse SSE stream
   const reader = res.body.getReader();

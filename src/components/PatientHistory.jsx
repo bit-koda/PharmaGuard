@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { History, ChevronRight, Trash2, AlertCircle, User } from 'lucide-react';
 import { fetchHistory, fetchPatientReport, deletePatientReport } from '../api/client';
+import { listReportsLocal, getReportLocal, deleteReportLocal } from '../api/localHistory';
 
 const RISK_COLORS = {
   Safe: 'text-green-700',
@@ -34,9 +35,16 @@ export default function PatientHistory({ onLoadReport }) {
     setError(null);
     try {
       const data = await fetchHistory();
-      setPatients(data.patients || []);
+      const serverPatients = data.patients || [];
+      if (serverPatients.length > 0) {
+        setPatients(serverPatients);
+      } else {
+        // Fallback to localStorage (works on Vercel where server history is ephemeral)
+        setPatients(listReportsLocal());
+      }
     } catch {
-      setError('Could not load history');
+      // Server unreachable — use localStorage
+      setPatients(listReportsLocal());
     } finally {
       setLoading(false);
     }
@@ -52,18 +60,24 @@ export default function PatientHistory({ onLoadReport }) {
       onLoadReport(report);
       setOpen(false);
     } catch {
-      setError(`Could not load ${pid}`);
+      // Fallback to localStorage
+      const local = getReportLocal(pid);
+      if (local) {
+        onLoadReport(local);
+        setOpen(false);
+      } else {
+        setError(`Could not load ${pid}`);
+      }
     }
   };
 
   const handleDelete = async (e, pid) => {
     e.stopPropagation();
+    deleteReportLocal(pid);
     try {
       await deletePatientReport(pid);
-      setPatients((prev) => prev.filter((p) => p.patient_id !== pid));
-    } catch {
-      /* ignore */
-    }
+    } catch { /* server may not have it */ }
+    setPatients((prev) => prev.filter((p) => p.patient_id !== pid));
   };
 
   return (
